@@ -8,7 +8,9 @@ builder.Services.AddControllers();
 
 builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection("MongoDbConfig"));
 
-builder.Services.AddSingleton<IMongoClient>(_ => new MongoClient(builder.Configuration.GetConnectionString("MongoDB")));
+var mongoDbConnection = builder.Configuration.GetConnectionString("MongoDB");
+
+builder.Services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbConnection));
 
 builder.Services.AddScoped<IMovieService, MovieService>();
 

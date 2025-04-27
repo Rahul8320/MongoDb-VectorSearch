@@ -19,7 +19,7 @@ public class MovieService : IMovieService
     }
 
 
-    public async Task<List<Movie>> GetMoviesAsync(string term = MovieConstants.DefaultSearchTerm, int limit = MovieConstants.DefaultSearchLimit)
+    public async Task<List<Movie>> GetMoviesAsync(string? term = MovieConstants.DefaultSearchTerm, int limit = MovieConstants.DefaultSearchLimit)
     {
 		try
 		{

@@ -5,5 +5,5 @@ namespace VectorSearch.Api.Movies.Services;
 
 public interface IMovieService
 {
-    Task<List<Movie>> GetMoviesAsync(string term = MovieConstants.DefaultSearchTerm, int limit = MovieConstants.DefaultSearchLimit);
+    Task<List<Movie>> GetMoviesAsync(string? term = MovieConstants.DefaultSearchTerm, int limit = MovieConstants.DefaultSearchLimit);
 }

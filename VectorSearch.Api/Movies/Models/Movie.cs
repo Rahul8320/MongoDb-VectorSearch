@@ -28,7 +28,7 @@ public class Movie
     [BsonElement("poster")]
     public string Poster { get; set; } = string.Empty;
 
-    [BsonElement("title")] 
+    [BsonElement("title")]
     public string Title { get; set; } = string.Empty;
 
     [BsonElement("fullplot")]
@@ -49,14 +49,17 @@ public class Movie
     [BsonElement("awards")]
     public Awards Awards { get; set; } = default!;
 
+    [BsonElement("rated")]
+    public string? Rated { get; set; }
+
     [BsonElement("lastupdated")]
-    public DateTime LastUpdated { get; set; }
+    public string Lastupdated { get; set; }= string.Empty;
 
     [BsonElement("year")]
-    public int Year { get; set; }
+    public object Year { get; set; } = default!;
 
     [BsonElement("imdb")]
-    public IMDB Imdb { get; set; } = default!;
+    public Imdb Imdb { get; set; } = default!;
 
     [BsonElement("countries")]
     public List<string> Countries { get; set; } = [];
@@ -85,36 +88,72 @@ public class Awards
     [BsonElement("text")]
     public string Text { get; set; } = string.Empty;
 }
-
-public class IMDB
+public class Imdb
 {
-    [BsonElement("rating")]
-    public decimal Rating { get; set; }
+    [BsonElement("id")]
+    public object ImdbId { get; set; } = default!;
 
     [BsonElement("votes")]
-    public int Votes { get; set; }
+    public object Votes { get; set; } = default!;
 
-    [BsonElement("id")]
-    public int Id { get; set; }
-}
-
-public class Viwer
-{
     [BsonElement("rating")]
-    public decimal Rating { get; set; }
-
-    [BsonElement("numReviews")]
-    public int NumReviews { get; set; }
+    public object Rating { get; set; } = default!;
 }
 
 public class Tomatoes
 {
-    [BsonElement("Viwer")]
-    public Viwer Viwer { get; set; } = default!;
-
-    [BsonElement("production")]
-    public string Production { get; set; } = string.Empty;
+    [BsonElement("viewer")]
+    public Viewer Viewer { get; set; } = default!;
 
     [BsonElement("lastUpdated")]
     public DateTime LastUpdated { get; set; }
+
+    [BsonElement("dvd")]
+    public DateTime? DVD { get; set; }
+
+    [BsonElement("website")]
+    public string? Website { get; set; }
+
+    [BsonElement("production")]
+    public string? Production { get; set; }
+
+    [BsonElement("critic")]
+    public Critic? Critic { get; set; }
+
+    [BsonElement("rotten")]
+    public int? Rotten { get; set; }
+
+    [BsonElement("fresh")]
+    public int? Fresh { get; set; }
+
+    [BsonElement("boxOffice")]
+    public string? BoxOffice { get; set; }
+
+    [BsonElement("consensus")]
+    public string? Consensus { get; set; }
+
+}
+
+public class Viewer
+{
+    [BsonElement("rating")]
+    public double Rating { get; set; }
+
+    [BsonElement("numReviews")]
+    public int NumReviews { get; set; }
+
+    [BsonElement("meter")]
+    public int Meter { get; set; }
+}
+
+public class Critic
+{
+    [BsonElement("rating")]
+    public double Rating { get; set; }
+
+    [BsonElement("numReviews")]
+    public int NumReviews { get; set; }
+
+    [BsonElement("meter")]
+    public int Meter { get; set; }
 }
