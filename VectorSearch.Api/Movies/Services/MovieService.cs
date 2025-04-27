@@ -11,7 +11,7 @@ public class MovieService : IMovieService
 	private readonly IMongoCollection<Movie> _moviesCollection;
 	private readonly ILogger<MovieService> _logger;
 	private readonly IMemoryCache _cache;
-	private readonly TimeSpan _cacheDuration = TimeSpan.FromSeconds(30);
+	private readonly TimeSpan _cacheDuration = TimeSpan.FromSeconds(MovieConstants.CachedDurationInSeconds);
 
     public MovieService(IMongoClient mongoClient, 
 	    IOptions<MongoDbConfig> mongoConfig, 
