@@ -23,14 +23,19 @@ public class MovieService : IMovieService
     {
 		try
 		{
+			_logger.LogInformation("Start searching movies... SearchTerm: {term}, limit: {limit}", term, limit);
 			var filter = Builders<Movie>.Filter.Empty;
 
 			if (string.IsNullOrEmpty(term) is false)
 			{
                 filter = Builders<Movie>.Filter.Where(m => m.Title.ToLower().Contains(term.ToLower()));
+                _logger.LogInformation("Search filter added. SearchTerm: {term}", term.ToLower());
 			}
 
-			return await _moviesCollection.Find(filter).Limit(limit).ToListAsync();
+			var movieList = await _moviesCollection.Find(filter).Limit(limit).ToListAsync();
+			_logger.LogInformation("Searched completed. Found movies count: {count}", movieList.Count);
+			
+			return movieList;
 		}
 		catch (Exception ex)
 		{
